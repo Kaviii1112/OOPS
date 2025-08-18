@@ -1,0 +1,33 @@
+public class SumOfNumbers {
+    public static void main(String[] args) {
+        int sum1 = 0;
+        for (int i = 1; i <= 100; i++) {
+            sum1 += i;
+        }
+        System.out.println("TC1: Sum from 1 to 100 = " + sum1);
+
+        int sum2 = 0;
+        for (int i = 1; i <= 50; i++) {
+            sum2 += i;
+        }
+        System.out.println("TC2: Sum from 1 to 50  = " + sum2);
+
+        int sum3 = 0;
+        for (int i = 1; i <= 10; i++) {
+            sum3 += i;
+        }
+        System.out.println("TC3: Sum from 1 to 10  = " + sum3);
+
+        int sum4 = 0;
+        for (int i = 50; i <= 100; i++) {
+            sum4 += i;
+        }
+        System.out.println("TC4: Sum from 50 to 100 = " + sum4);
+
+        int sum5 = 0;
+        for (int i = 1; i <= 1; i++) {
+            sum5 += i;
+        }
+        System.out.println("TC5: Sum from 1 to 1   = " + sum5);
+    }
+}
