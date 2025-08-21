@@ -1,0 +1,15 @@
+public class A {
+	int a,b,c;
+	void add()
+	{
+		c=a+b;
+		System.out.println("the value of c is "+c);
+	}
+ public static void main(String[] args) {
+		A obj1= new A ();
+		obj1.a=2;
+		obj1.b=3;
+		obj1.add();
+}
+}
+
