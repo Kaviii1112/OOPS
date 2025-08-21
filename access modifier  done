@@ -1,0 +1,22 @@
+class applyform{
+    public String  name;
+    public int rollno;
+    
+   public void disp(){
+       System.out.println(name);
+       System.out.println(rollno);
+ }
+    public static void main (String[] args){
+    applyform std1 =new applyform();
+    std1.name = "kavi";
+    std1.rollno=58;
+    std1.disp();
+    }
+   }
+ 
+
+ output:
+ kavi
+58
+
+=== Code Execution Successful ===
