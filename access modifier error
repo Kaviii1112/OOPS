@@ -1,0 +1,28 @@
+class applyform{
+    public String  name;
+    private int rollno;
+    
+   public void disp(){
+       System.out.println(name);
+       System.out.println(rollno);
+   }
+ }
+   public class Main{
+    public static void main (String[] args){
+    applyform std1 =new applyform();
+    std1.name = "kavi";
+    std1.rollno=58;
+    std1.disp();
+    }
+   }
+
+   output:
+   ERROR!
+/tmp/6SJTTa02FF/Main.java:16: error: rollno has private access in applyform
+    std1.rollno=58;
+        ^
+1 error
+ERROR!
+error: compilation failed
+
+=== Code Exited With Errors ===
