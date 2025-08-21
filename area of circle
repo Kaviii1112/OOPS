@@ -1,0 +1,20 @@
+class area
+{
+    double r,a;
+    void  area()
+    {
+        a=3.14*r*r;
+        System.out.println("area:"+a);
+    }
+
+    
+        public static void main(String[] args)
+        {
+            area a1 = new area();
+            a1.r=3.0;
+            a1. area();
+        }
+    
+}
+output:
+28.99999999999
