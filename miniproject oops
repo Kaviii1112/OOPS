@@ -1,0 +1,90 @@
+coding:
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+
+public class CarRentalPaymentSystem extends Application {
+    @Override
+    public void start(Stage primaryStage) {
+        primaryStage.setTitle("Car Rental Payment System");
+        GridPane grid = new GridPane();
+        grid.setPadding(new Insets(20));
+        grid.setVgap(10);
+        grid.setHgap(10);
+
+        Label nameLabel = new Label("Customer Name:");
+        TextField nameField = new TextField();
+        grid.add(nameLabel, 0, 0);
+        grid.add(nameField, 1, 0);
+
+        Label carLabel = new Label("Select Car:");
+        ComboBox<String> carBox = new ComboBox<>();
+        carBox.getItems().addAll("Sedan - ₹2500/day", "SUV - ₹3500/day", "Hatchback - ₹2000/day");
+        carBox.setPromptText("Choose a car");
+        grid.add(carLabel, 0, 1);
+        grid.add(carBox, 1, 1);
+
+        Label daysLabel = new Label("Number of Days:");
+        TextField daysField = new TextField();
+        grid.add(daysLabel, 0, 2);
+        grid.add(daysField, 1, 2);
+
+        Label paymentLabel = new Label("Payment Mode:");
+        ComboBox<String> paymentBox = new ComboBox<>();
+        paymentBox.getItems().addAll("Cash", "Credit Card", "UPI");
+        paymentBox.setPromptText("Select mode");
+        grid.add(paymentLabel, 0, 3);
+        grid.add(paymentBox, 1, 3);
+
+        TextArea resultArea = new TextArea();
+        resultArea.setEditable(false);
+        resultArea.setPrefHeight(120);
+        grid.add(resultArea, 0, 6, 2, 1);
+
+        Button calcBtn = new Button("Generate Bill");
+        Button resetBtn = new Button("Reset");
+        grid.add(calcBtn, 0, 5);
+        grid.add(resetBtn, 1, 5);
+
+        calcBtn.setOnAction(e -> {
+            String name = nameField.getText();
+            String carType = carBox.getValue();
+            String daysText = daysField.getText();
+            String payment = paymentBox.getValue();
+            if (name.isEmpty() || carType == null || daysText.isEmpty() || payment == null) {
+                resultArea.setText("⚠ Please fill all fields properly.");
+                return;
+            }
+            try {
+                int days = Integer.parseInt(daysText);
+                double rate = carType.contains("Sedan") ? 2500 : carType.contains("SUV") ? 3500 : 2000;
+                double total = days * rate;
+                resultArea.setText("----- Rental Bill Summary -----\nCustomer Name: " + name +
+                        "\nCar Type: " + carType + "\nDays Rented: " + days +
+                        "\nPayment Mode: " + payment + "\n---------------------------------\nTotal Amount: ₹" + total +
+                        "\n---------------------------------\nThank you for using Car Rental System!");
+            } catch (NumberFormatException ex) {
+                resultArea.setText("⚠ Please enter valid number of days.");
+            }
+        });
+
+        resetBtn.setOnAction(e -> {
+            nameField.clear();
+            carBox.setValue(null);
+            daysField.clear();
+            paymentBox.setValue(null);
+            resultArea.clear();
+        });
+
+        Scene scene = new Scene(grid, 480, 420);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
